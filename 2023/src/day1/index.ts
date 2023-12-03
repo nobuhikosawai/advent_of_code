@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { assert } from "../utils";
+import { Main } from "../types";
 
 let file = "/input.txt";
 
@@ -11,8 +12,8 @@ function readInput(file: string): string[] {
     .split("\n");
 }
 
-function part1() {
-  if (process.env.SAMPLE === "true") {
+function part1(sample: boolean = false) {
+  if (sample) {
     file = "/sample1.txt";
   }
 
@@ -28,8 +29,6 @@ function part1() {
 
   console.log(res);
 }
-
-// part1();
 
 const numberMap: Record<string, string> = {
   one: "1",
@@ -66,8 +65,8 @@ function getLastMatch(input: string): string {
   throw new Error();
 }
 
-function part2() {
-  if (process.env.SAMPLE === "true") {
+function part2(sample: boolean = false) {
+  if (sample) {
     file = "/sample2.txt";
   }
 
@@ -81,4 +80,4 @@ function part2() {
   console.log(res);
 }
 
-part2();
+export const main: Main = { part1, part2 };
